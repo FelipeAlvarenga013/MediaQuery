@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../estilos/style.css" media="all"/>
+    <link rel="stylesheet" href="estilos/style.css" media="all"/>
+    <link rel="stylesheet" href="estilos/style02.css" />
     <title>Menu</title>
 </head>
 <body>
@@ -12,6 +13,11 @@
             <h1>Meu Site</h1>
         </section>
         <section>
+            <aside id="but">
+                <span class="span1"></span>
+                <span class="span2"></span>
+                <span class="span3"></span>
+            </aside>
             <ul>
                 <li>Opção1</li>
                 <li>Opção2</li>
@@ -35,5 +41,33 @@
             </p>
         </section>
     </main>
+
+
+    <script>
+
+        /* MOBILE */
+        document.querySelector('#but').addEventListener('click',function(){
+            console.log(document.querySelector('ul').style.height.valueOf())
+            if(document.querySelector('ul').style.height.valueOf()=='') {
+                document.querySelector('.span2').style.display='none';
+                document.querySelector('.span1').style.cssText='top: 7%; left: 0%; position:relative;';
+                document.querySelector('.span3').style.cssText='top: 54%; left: 0%; position:relative;';
+                setTimeout(function(){document.querySelector('.span1').style.transform='translate(-6%, -6px)rotate(-46deg)'},100);
+                setTimeout(function(){document.querySelector('.span3').style.transform='translate(-2%, 2px)rotate(46deg)'},100);
+                document.querySelector('ul').style.cssText=' height: 183px;  transition: .9s;';
+                for(let c of document.querySelectorAll('li')) {
+                    console.log('OK')
+                    c.style.cssText=' transition: 1s; border-width: 1px; border-bottom-style: solid; border-color: #fff; width: 99%;';
+                    
+                }
+            } else if(document.querySelector('ul').style.height.valueOf() == '183px')  {
+                document.querySelector('.span1').style.transform = 'none';
+                document.querySelector('.span2').style.display='block';
+                document.querySelector('.span3').style.transform='none';
+                document.querySelector('ul').style.height='';
+                document.querySelectorAll('li').forEach((vl)=>{vl.style.cssText='transition: none; border-width: none; border-bottom: none; border-color: none; width: 60px;'});
+            }
+        })
+    </script>
 </body>
 </html>
