@@ -46,6 +46,22 @@
     <script>
 
         /* MOBILE */
+
+        
+        window.onresize = function() {
+            if(document.body.clientWidth >= 668) {
+                document.querySelectorAll('li').forEach((vl)=>{
+                    vl.style.cssText='border:none; transition:none;';
+                })
+
+                document.querySelector('ul').style.height='';
+                document.querySelector('.span1').style.transform = 'none';
+                document.querySelector('.span2').style.display = 'block';
+                document.querySelector('.span3').style.transform = 'none';
+            }
+        }
+        
+
         document.querySelector('#but').addEventListener('click',function(){
             console.log(document.querySelector('ul').style.height.valueOf())
             if(document.querySelector('ul').style.height.valueOf()=='') {
@@ -57,7 +73,7 @@
                 document.querySelector('ul').style.cssText=' height: 183px;  transition: .9s;';
                 for(let c of document.querySelectorAll('li')) {
                     console.log('OK')
-                    c.style.cssText=' transition: 1s; border-width: 1px; border-bottom-style: solid; border-color: #fff; width: 99%;';
+                    c.style.cssText=' transition: 1s; border-width: 1px; border-bottom-style: solid; border-color: #fff; width: 100%;';
                     
                 }
             } else if(document.querySelector('ul').style.height.valueOf() == '183px')  {
